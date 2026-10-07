@@ -77,6 +77,10 @@ public class JpaPost {
         return member;
     }
 
+    public PostStatus getStatus() {
+        return status;
+    }
+
     public void edit(String title, String body) {
         validate(title, body);
         this.title = title;

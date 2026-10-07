@@ -6,6 +6,7 @@
     <persistence-unit name="kdt" transaction-type="RESOURCE_LOCAL">
         <class>chapter03.lesson07.JpaMember</class>
         <class>chapter03.lesson07.JpaPost</class>
+        <class>chapter03.lesson07.JpaComment</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url"
                       value="jdbc:mysql://127.0.0.1:3306/kdt?sslMode=DISABLED"/>
