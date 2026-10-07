@@ -21,6 +21,28 @@ public class JpaPost {
     @JoinColumn(name = "member_id", nullable = false)
     private JpaMember member;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private PostStatus status = PostStatus.DRAFT;
+
+    public void publish() {
+        if (status != PostStatus.DRAFT) {
+            throw new IllegalArgumentException("only draft can be published");
+        }
+        status = PostStatus.PUBLISHED;
+    }
+
+    public void archive() {
+        if (status == PostStatus.ARCHIVED) {
+            throw new IllegalArgumentException("already archived");
+        }
+        status = PostStatus.ARCHIVED;
+    }
+
+    public boolean canReceiveComment() {
+        return status == PostStatus.PUBLISHED;
+    }
+
     protected JpaPost() {
     }
 
