@@ -2,6 +2,7 @@ package chapter03.lesson07;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -114,10 +115,36 @@ public class JpaPost {
         return status;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
     public void edit(String title, String body) {
         validate(title, body);
         this.title = title;
         this.body = body;
+    }
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    private void onCreate() {
+        LocalDateTime now = LocalDateTime.now();
+        createdAt = now;
+        updatedAt = now;
+    }
+
+    @PreUpdate
+    private void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 
 }

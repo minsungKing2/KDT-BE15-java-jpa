@@ -7,6 +7,9 @@
         <class>chapter03.lesson07.JpaMember</class>
         <class>chapter03.lesson07.JpaPost</class>
         <class>chapter03.lesson07.JpaComment</class>
+        <class>chapter03.lesson07.Student</class>
+        <class>chapter03.lesson07.Course</class>
+        <class>chapter03.lesson07.Enrollment</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url"
                       value="jdbc:mysql://127.0.0.1:3306/kdt?sslMode=DISABLED"/>
